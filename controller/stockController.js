@@ -1,5 +1,6 @@
 const Tank = require("../models/tanks");
 const Nozel=require("../models/Nozel");
+const NoFuel=require("../models/noFuel");
 
 const getTanks = async (req, res) => {
     try {
@@ -73,10 +74,44 @@ const addNozel = async (req, res) => {
         res.status(500).json({ error: "Error adding Nozel" });
     }
 };
+const getNoFuel = async (req, res) => {
+    try {
+        const { ownerId, pumpId } = req.body;
+
+        const noFuel = await NoFuel.find({ ownerId, pumpId });
+        res.status(200).json({code:200 ,model:noFuel });
+    } catch (error) {
+        res.status(500).json({ code:500,msg:error.message });
+    }
+};
+const addNoFuel = async (req, res) => {
+    try {
+        const { ownerId, pumpId, productName,size,quantity} = req.body;
+        const noFuelData=new NoFuel({
+            ownerId,
+            pumpId,
+            productName,
+            size,
+            quantity,
+        })
+
+        const savedNoFuel = await noFuelData.save();
+        if(savedNoFuel){
+            return res.json({code:200,model:savedNoFuel})
+        }
+        else{
+            return res.json({code:400,msg:"Something Went Wrong"})
+        }
+    } catch (error) {
+        res.status(500).json({ code:500,msg:error.message});
+    }
+};
 module.exports = {
     getTanks,
     addTank,
     getTankByProduct,
     getNozels,
     addNozel,
+    addNoFuel,
+    getNoFuel,
 };
