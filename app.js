@@ -5,6 +5,7 @@ const authRoutes=require("./routes/authRoutes")
 const setupRoutes=require("./routes/setupRoute")
 const pumpRoutes=require("./routes/pumpRoute")
 const stockRoutes=require("./routes/stockRoute")
+const ledgerRoutes=require("./routes/ledgerRoutes")
 
 const app=express();
 app.use(express.json());
@@ -14,4 +15,6 @@ app.use("/api/auth",authRoutes)
 app.use("/api/setup",setupRoutes)
 app.use("/api/pump",pumpRoutes)
 app.use("/api/stock",stockRoutes)
+app.use("/api/ledger",ledgerRoutes)
+
 module.exports = app;

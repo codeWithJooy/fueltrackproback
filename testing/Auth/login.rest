@@ -1,4 +1,4 @@
-POST  http://localhost:5000/api/auth/login
+POST  https://fueltrackpro.onrender.com/api/auth
 Content-Type:application/json
 
 {
