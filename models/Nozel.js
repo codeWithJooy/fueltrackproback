@@ -17,7 +17,7 @@ const nozelSchema = new mongoose.Schema({
     required:true,
     type:String,
   },
-  npd:{
+  mpd:{
     type:String,
     required:true,
   },
@@ -25,6 +25,10 @@ const nozelSchema = new mongoose.Schema({
     type:String,
     required:true,
   },
+  closingReading:{
+    type:String,
+    required:true,
+  }
 },{
     timestamps:true,
 });

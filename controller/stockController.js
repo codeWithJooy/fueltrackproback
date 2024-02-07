@@ -1,6 +1,7 @@
 const Tank = require("../models/tanks");
 const Nozel=require("../models/Nozel");
 const NoFuel=require("../models/noFuel");
+const PumpNozelClosing=require("../models/pumpNozel/pumpNozelClosing")
 
 const getTanks = async (req, res) => {
     try {
@@ -58,17 +59,26 @@ const getNozels = async (req, res) => {
 };
 const addNozel = async (req, res) => {
     try {
-        const { ownerId, pumpId, nozelName, product,npd, tank } = req.body;
+        const { ownerId, pumpId, nozelName, product,mpd, tank,closingReading } = req.body;
         const newNozel = new Nozel({
             ownerId,
             pumpId,
             nozelName,
             product,
-            npd,
+            mpd,
             tank,
+            closingReading
         });
 
         const savedNozel = await newNozel.save();
+
+        const pumpClosing=new PumpNozelClosing({
+            pumpId,
+            nozelId:savedNozel._id,
+            closingMeter:closingReading
+        });
+        const savedNozelClosing=await pumpClosing.save()
+
         res.json({ code:200,nozel: savedNozel });
     } catch (error) {
         res.status(500).json({ error: "Error adding Nozel" });

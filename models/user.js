@@ -18,10 +18,17 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  setup: {
-    type: Boolean,
-    default: false,
+  acess:{
+    type:Object,
   },
+  userType:{
+    type:String,
+    default:"Super User"
+  },
+  pumpId:{
+   type: mongoose.Schema.Types.ObjectId,
+   default:"All",
+  }
 },
 {
     timestamps:true,
