@@ -50,7 +50,7 @@ const getTankByProduct = async (req, res) => {
 const getNozels = async (req, res) => {
     try {
         const { ownerId, pumpId } = req.body;
-
+        console.log(pumpId)
         const nozels = await Nozel.find({ ownerId, pumpId });
         res.status(200).json({code:200 ,model:nozels });
     } catch (error) {

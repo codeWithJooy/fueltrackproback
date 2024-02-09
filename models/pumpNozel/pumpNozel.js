@@ -10,6 +10,10 @@ const pumpNozelSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       required: true,
     },
+    nozelName:{
+      required: true,
+      type: String,
+    },
     date: {
       required: true,
       type: String,
@@ -39,11 +43,11 @@ const pumpNozelSchema = new mongoose.Schema(
     },
     salesDsr: {
       type: String,
-      required: true,
+      
     },
     salesDiff: {
       type: String,
-      required: true,
+      
     },
   },
   {
