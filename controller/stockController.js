@@ -67,17 +67,10 @@ const addNozel = async (req, res) => {
             product,
             mpd,
             tank,
-            closingReading
+            closingMeter:closingReading
         });
 
         const savedNozel = await newNozel.save();
-
-        const pumpClosing=new PumpNozelClosing({
-            pumpId,
-            nozelId:savedNozel._id,
-            closingMeter:closingReading
-        });
-        const savedNozelClosing=await pumpClosing.save()
 
         res.json({ code:200,nozel: savedNozel });
     } catch (error) {

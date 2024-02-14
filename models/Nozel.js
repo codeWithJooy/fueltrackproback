@@ -25,7 +25,7 @@ const nozelSchema = new mongoose.Schema({
     type:String,
     required:true,
   },
-  closingReading:{
+  closingMeter:{
     type:String,
     required:true,
   }

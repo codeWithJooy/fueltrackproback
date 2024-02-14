@@ -1,0 +1,6 @@
+POST  http://localhost:5000/api/pumps/sales/getNozelData
+Content-Type:application/json
+
+{
+  "pumpId":"65ae8b36380fffebf1d9ffec"
+}

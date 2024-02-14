@@ -5,8 +5,11 @@ const pumpOtherController=require("../../controller/pumpNozel/pumpOtherControlle
 
 router.post("/getNozelByPumpId",pumpNozelController.getNozelsByPumpId)
 router.post("/addNozelReading",pumpNozelController.addNozelReading)
+router.post("/addNozelReadingFinal",pumpNozelController.addNozelReadingFinal)
 router.post("/getPumpNozelClosingMeter",pumpNozelController.getPumpNozelClosingMeter)
 router.post("/getPumpNozelSale",pumpNozelController.getPumpNozelSale)
+router.post("/getNozelData",pumpNozelController.getNozelData)
+router.post("/getNozelReading",pumpNozelController.getNozelReading)
 
 router.post("/addOtherSale",pumpOtherController.addOtherSale)
 router.post("/getOtherSale",pumpOtherController.getOtherSale)

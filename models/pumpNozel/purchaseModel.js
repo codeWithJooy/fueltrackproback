@@ -1,61 +1,65 @@
 const mongoose = require("mongoose");
 
-const pumpNozelSchema = new mongoose.Schema(
+const purchaseModelSchema = new mongoose.Schema(
   {
     pumpId: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
     },
-    mpd:{
+    date:{
+      type:String,
+      required:true,
+    },
+    supplierName:{
       required: true,
       type: String,
     },
-    nozelId: {
-      type: mongoose.Schema.Types.ObjectId,
-      required: true,
-    },
-    nozelName:{
+    supplierInvoice: {
       required: true,
       type: String,
     },
-    date: {
+    invoiceDate: {
       required: true,
       type: String,
     },
-    openingMeter: {
-      required: true,
-      type: String,
-    },
-    closingMeter: {
+    purchaseLedger: {
       type: String,
       required: true,
     },
-    testing: {
+    itemName: {
       type: String,
       required: true,
     },
-    additionalOut: {
+    qty: {
       type: String,
       required: true,
     },
-    additionalIn: {
+    rate: {
       type: String,
     },
-    netSales: {
+    amount: {
       type: String,
       required: true,
     },
-    salesDsr: {
+    deliveryCharge: {
       type: String,
-      
+      required:true,
     },
-    salesDiff: {
+    tcs: {
       type: String,
-      
+      required:true,
+    },
+    extra:{
+        type:String,
+        required:true,
+    },
+    roundoff:{
+        type:String,
+        required:true,
     },
     status:{
-      type:String,
-      default:"Pending",
+       type:String,
+       default:"Pending",
     }
   },
   {
@@ -63,6 +67,6 @@ const pumpNozelSchema = new mongoose.Schema(
   }
 );
 
-const PumpNozelModel = mongoose.model("PumpNozel", pumpNozelSchema);
+const PurchaseModel = mongoose.model("PurchaseModel", purchaseModelSchema);
 
-module.exports = PumpNozelModel;
+module.exports = PurchaseModel;
