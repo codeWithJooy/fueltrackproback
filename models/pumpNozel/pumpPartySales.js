@@ -1,36 +1,32 @@
 const mongoose = require("mongoose");
 
-const purchaseModelSchema = new mongoose.Schema(
+const pumpPartySchema = new mongoose.Schema(
   {
-    ownerId: {
-      type: mongoose.Schema.Types.ObjectId,
-      required: true,
-    },
     pumpId: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
     },
+    partyId: {
+      type: mongoose.Schema.Types.ObjectId,
+      required:true,
+    },
+    partyName: {
+      type: String,
+      required: true,
+    },
     date: {
-      type: String,
-      required: true,
-    },
-    supplierName: {
       required: true,
       type: String,
     },
-    supplierInvoice: {
+    vehicle: {
       required: true,
       type: String,
     },
-    invoiceDate: {
+    salesLedger: {
       required: true,
       type: String,
     },
-    purchaseLedger: {
-      type: String,
-      required: true,
-    },
-    itemName: {
+    item: {
       type: String,
       required: true,
     },
@@ -40,26 +36,20 @@ const purchaseModelSchema = new mongoose.Schema(
     },
     rate: {
       type: String,
+      required: true,
     },
     amount: {
       type: String,
-      required: true,
+      required:true,
     },
-    deliveryCharge: {
+    delivery: {
       type: String,
-      required: true,
     },
     tcs: {
       type: String,
-      required: true,
-    },
-    extra: {
-      type: String,
-      required: true,
     },
     roundoff: {
       type: String,
-      required: true,
     },
     status: {
       type: String,
@@ -71,6 +61,6 @@ const purchaseModelSchema = new mongoose.Schema(
   }
 );
 
-const PurchaseModel = mongoose.model("PurchaseModel", purchaseModelSchema);
+const PumpPartySales = mongoose.model("PumpPartySales", pumpPartySchema);
 
-module.exports = PurchaseModel;
+module.exports =PumpPartySales
