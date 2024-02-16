@@ -6,6 +6,10 @@ const pumpExpenditureSchema=new mongoose.Schema(
             type:mongoose.Schema.Types.ObjectId,
             required:true,
         },
+        date:{
+            type:String,
+            required:true,
+        },
         expenditureType:{
             type:String,
             required:true,

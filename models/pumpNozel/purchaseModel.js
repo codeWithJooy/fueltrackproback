@@ -2,10 +2,6 @@ const mongoose = require("mongoose");
 
 const purchaseModelSchema = new mongoose.Schema(
   {
-    ownerId: {
-      type: mongoose.Schema.Types.ObjectId,
-      required: true,
-    },
     pumpId: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
@@ -19,11 +15,9 @@ const purchaseModelSchema = new mongoose.Schema(
       type: String,
     },
     supplierInvoice: {
-      required: true,
       type: String,
     },
     invoiceDate: {
-      required: true,
       type: String,
     },
     purchaseLedger: {
@@ -43,23 +37,18 @@ const purchaseModelSchema = new mongoose.Schema(
     },
     amount: {
       type: String,
-      required: true,
     },
     deliveryCharge: {
       type: String,
-      required: true,
     },
     tcs: {
       type: String,
-      required: true,
     },
     extra: {
       type: String,
-      required: true,
     },
     roundoff: {
       type: String,
-      required: true,
     },
     status: {
       type: String,

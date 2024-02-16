@@ -12,7 +12,7 @@ const pumpSalesRoutes=require("./routes/pumpRoutes/salesRoutes")
 const pumpPartyRoutes=require("./routes/pumpRoutes/partyRoutes")
 const pumpMiscRoutes=require("./routes/pumpRoutes/miscRoutes")
 const expenditureRoutes=require("./routes/pumpRoutes/expenditureRoutes")
-
+const purchaseRoutes=require("./routes/pumpRoutes/purchaseRoutes")
 
 const app=express();
 app.use(express.json());
@@ -28,6 +28,7 @@ app.use("/api/allUsers",userRoutes)
 app.use("/api/pumps/sales",pumpSalesRoutes)
 app.use("/api/pumps/party",pumpPartyRoutes)
 app.use("/api/pumps/misc",pumpMiscRoutes)
+app.use("/api/pumps/purchase",purchaseRoutes)
 app.use("/api/pumps/expenditure",expenditureRoutes)
 
 

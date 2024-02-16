@@ -6,6 +6,6 @@ const expenditureController=require("../../controller/pumpNozel/pumpExpenditureC
 router.post("/addExpenditureType",expenditureController.addExpenditureType)
 router.post("/addPumpExpenditure",expenditureController.addPumpExpenditure)
 router.post("/getExpenditureType",expenditureController.getExpenditureType)
-router.post("/getExpenditure",expenditureController.getPumpExpenditure)
+router.post("/getPumpExpenditure",expenditureController.getPumpExpenditure)
 
 module.exports=router

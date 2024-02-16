@@ -3,9 +3,10 @@ const ExpenditureTypeModel=require("../../models/pumpNozel/pumpExpenditureType")
 
 const addPumpExpenditure=async(req,res)=>{
     try{
-       const {pumpId,expenditureType,details,amount}=req.body
+       const {pumpId,date,expenditureType,details,amount}=req.body
        let newExpenditure=new ExpenditureModel({
         pumpId,
+        date,
         expenditureType,
         details,
         amount

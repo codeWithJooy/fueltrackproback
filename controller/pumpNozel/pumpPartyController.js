@@ -69,9 +69,17 @@ const addPartySales=async(req,res)=>{
 }
 const getPartySales=async(req,res)=>{
   try{
-    const {pumpId}=req.body
-    let query={pumpId}
-    
+    const {pumpId,date,partyName,salesLedger,vehicle}=req.body
+    let query={pumpId,date}
+    if(partyName){
+      query.partyName=partyName
+    }
+    if(salesLedger){
+      query.salesLedger=salesLedger
+    }
+    if(vehicle){
+      query.vehicle=vehicle
+    }
     let partyData=await PumpPartySales.find(query)
     if(partyData){
       return res.json({code:200,model:partyData})
