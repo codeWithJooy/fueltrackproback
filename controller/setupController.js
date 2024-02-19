@@ -1,6 +1,7 @@
 const Pump = require("../models/pumps");
 const User = require("../models/user");
 const ItemModel=require("../models/Item")
+const ItemRateModel=require("../models/ItemRate")
 
 const setPumps = async (req, res) => {
     try {
@@ -55,9 +56,41 @@ const addItems=async(req,res)=>{
 }
 const getItems=async(req,res)=>{
     try{
-        const {pumpId}=req.body()
+        const {pumpId}=req.body
         let query={pumpId}
         let itemData=await ItemModel.find(query)
+        return res.json({code:200,model:itemData})
+    }
+    catch(error){
+       return res.json({code:500,msg:error.message})
+    }
+}
+const addItemRate=async(req,res)=>{
+    try{
+      const {ownerId,pumpId,product,date,rate}=req.body
+      const newItemRate=new ItemRateModel({
+        ownerId,
+        pumpId,
+        product,
+        date,
+        rate
+      })
+      let saveItemRate=await newItemRate.save()
+      if(saveItemRate){
+        return res.json({code:200,model:saveItemRate})
+      }
+      else{
+        return res.json({code:200,model:{}})
+      }
+    }catch(error){
+        return res.status(500).json({code:500,msg:error.message})
+    }
+}
+const getItemRate=async(req,res)=>{
+    try{
+        const {pumpId}=req.body
+        let query={pumpId}
+        let itemData=await ItemRateModel.find(query)
         return res.json({code:200,model:itemData})
     }
     catch(error){
@@ -68,4 +101,6 @@ module.exports = {
     setPumps,
     addItems,
     getItems,
+    addItemRate,
+    getItemRate,
 };

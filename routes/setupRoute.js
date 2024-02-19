@@ -5,4 +5,7 @@ const setupController=require("../controller/setupController")
 router.post("/pumpsetup",setupController.setPumps)
 router.post("/addItem",setupController.addItems)
 router.post("/getItem",setupController.getItems)
+router.post("/getItemRate",setupController.getItemRate)
+router.post("/addItemRate",setupController.addItemRate)
+
 module.exports = router
