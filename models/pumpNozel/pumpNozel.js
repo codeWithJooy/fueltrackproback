@@ -34,6 +34,10 @@ const pumpNozelSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    rate:{
+      type:String,
+      required:true,
+    },
     additionalOut: {
       type: String,
       required: true,
@@ -44,6 +48,10 @@ const pumpNozelSchema = new mongoose.Schema(
     netSales: {
       type: String,
       required: true,
+    },
+    total:{
+      type:String,
+      required:true,
     },
     salesDsr: {
       type: String,

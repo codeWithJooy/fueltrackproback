@@ -7,5 +7,6 @@ router.post("/addItem",setupController.addItems)
 router.post("/getItem",setupController.getItems)
 router.post("/getItemRate",setupController.getItemRate)
 router.post("/addItemRate",setupController.addItemRate)
+router.post("/getOneItemRate",setupController.getOneItemRate)
 
 module.exports = router

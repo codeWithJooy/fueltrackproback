@@ -1,5 +1,6 @@
 const Pump = require("../models/pumps");
-
+const ItemModel=require("../models/Item")
+const ItemData=require("../data/Items")
 const getPumps = async (req, res) => {
   try {
     const { ownerId } = req.body;
@@ -63,6 +64,14 @@ const addPump = async (req, res) => {
 
     let savePump = await pump.save();
     if (savePump) {
+      const items = await ItemModel.insertMany(ItemData.map(item => ({
+        ownerId: savePump.ownerId,
+        pumpId: savePump._id,
+        productName: item.product,
+        symbol: item.symbol,
+        unit: item.unit,
+        type: item.type,
+      })));
       return res
         .status(200)
         .json({ code: 200, msg: "Pumps Added successfully" });

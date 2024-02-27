@@ -62,6 +62,22 @@ const addPartySales=async(req,res)=>{
     })
 
     const savePartySales=await newPartySales.save()
+    
+    let qry={pumpId,partyName}
+    const partyDetails=await LedgerModel.findOne(qry)
+    if (!partyDetails) {
+      return res.status(404).json({
+        code: 404,
+        msg: 'Party not found'
+      });
+    }
+
+    // Convert balance to a number and subtract saleAmount
+    partyDetails.openingBalance = parseFloat(partyDetails.openingBalance) + parseFloat(amount);
+
+    // Save updated party details
+    await partyDetails.save();
+
     return res.json({code:200,model:savePartySales})
   }catch(error){
     return res.status(500).json({code:500,msg:error.message})

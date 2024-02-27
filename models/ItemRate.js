@@ -19,6 +19,7 @@ const itemRateSchema = new mongoose.Schema({
   },
   rate:{
     type:String,
+    required:true,
   },
   
 },{

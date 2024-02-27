@@ -88,13 +88,26 @@ const addItemRate=async(req,res)=>{
 }
 const getItemRate=async(req,res)=>{
     try{
-        const {pumpId}=req.body
+        const {pumpId,date}=req.body
         let query={pumpId}
+        if(date){
+            query.date=date
+        }
         let itemData=await ItemRateModel.find(query)
         return res.json({code:200,model:itemData})
     }
     catch(error){
        return res.json({code:500,msg:error.message})
+    }
+}
+const getOneItemRate=async(req,res)=>{
+    try{
+       const {pumpId,product}=req.body
+       const query={pumpId,product}
+       let item=await ItemRateModel.findOne(query)
+       return res.json({code:200,model:item})
+    }catch(error){
+        return res.status(500).json({code:502,msg:error.message})
     }
 }
 module.exports = {
@@ -103,4 +116,5 @@ module.exports = {
     getItems,
     addItemRate,
     getItemRate,
+    getOneItemRate,
 };

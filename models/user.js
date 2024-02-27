@@ -27,7 +27,6 @@ const userSchema = new mongoose.Schema({
   },
   pumpId:{
    type: mongoose.Schema.Types.ObjectId,
-   default:"All",
   }
 },
 {
