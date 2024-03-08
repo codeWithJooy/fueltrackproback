@@ -36,6 +36,27 @@ const getPumpExpenditure=async(req,res)=>{
       return res.status(500).json({code:500,msg:error.message})
     }
   }
+  const getPumpExpenditureRange=async(req,res)=>{
+    try{
+      const {pumpId,initialDate,finalDate}=req.body
+      let query={pumpId}
+
+      if (initialDate && finalDate) {
+        query.date = { $gte: initialDate, $lte: finalDate };
+      }
+      
+      let expenditureData=await ExpenditureModel.find(query)
+      if(expenditureData){
+        return res.json({code:200,model:expenditureData})
+      }
+      else{
+        return res.json({code:200,model:[]})
+      }
+    }
+    catch(error){
+      return res.status(500).json({code:500,msg:error.message})
+    }
+  }
   const addExpenditureType=async(req,res)=>{
     try{
        const {pumpId,expenditureType}=req.body
@@ -73,5 +94,6 @@ module.exports={
     addExpenditureType,
     getExpenditureType,
     getPumpExpenditure,
+    getPumpExpenditureRange,
 
 }

@@ -7,6 +7,7 @@ router.post("/addPartyVehicle",partyController.addPartyVehicle)
 router.post("/getPartyVehicle",partyController.getPartyVehicle)
 router.post("/addPartySales",partyController.addPartySales)
 router.post("/getPartySales",partyController.getPartySales)
+router.post("/getPartySalesRange",partyController.getPartySalesRange)
 
 module.exports=router
 

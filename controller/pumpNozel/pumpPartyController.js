@@ -108,10 +108,39 @@ const getPartySales=async(req,res)=>{
     return res.status(500).json({code:500,msg:error.message})
   }
 }
+const getPartySalesRange=async(req,res)=>{
+  try{
+    const {pumpId,initialDate,finalDate,partyName,salesLedger,vehicle}=req.body
+    let query={pumpId}
+    if (initialDate && finalDate) {
+      query.date = { $gte: initialDate, $lte: finalDate };
+    }
+    if(partyName){
+      query.partyName=partyName
+    }
+    if(salesLedger){
+      query.salesLedger=salesLedger
+    }
+    if(vehicle){
+      query.vehicle=vehicle
+    }
+    let partyData=await PumpPartySales.find(query)
+    if(partyData){
+      return res.json({code:200,model:partyData})
+    }
+    else{
+      return res.json({code:200,model:[]})
+    }
+  }
+  catch(error){
+    return res.status(500).json({code:500,msg:error.message})
+  }
+}
 module.exports = {
   getPartyName,
   addPartyVehicle,
   getPartyVehicle,
   addPartySales,
   getPartySales,
+  getPartySalesRange,
 };

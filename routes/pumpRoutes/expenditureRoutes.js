@@ -7,5 +7,5 @@ router.post("/addExpenditureType",expenditureController.addExpenditureType)
 router.post("/addPumpExpenditure",expenditureController.addPumpExpenditure)
 router.post("/getExpenditureType",expenditureController.getExpenditureType)
 router.post("/getPumpExpenditure",expenditureController.getPumpExpenditure)
-
+router.post("/getPumpExpenditureRange",expenditureController.getPumpExpenditureRange)
 module.exports=router

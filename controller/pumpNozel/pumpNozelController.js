@@ -25,6 +25,25 @@ const getNozelReading = async (req, res) => {
     return res.status(500).json({ code: 500, msg: error.message });
   }
 };
+const getNozelReadingRange = async (req, res) => {
+  try {
+    const { pumpId, mpd, initialDate, finalDate, status } = req.body;
+    let query = { pumpId, status };
+
+    if (mpd) {
+      query.mpd = mpd;
+    }
+
+    if (initialDate && finalDate) {
+      query.date = { $gte: initialDate, $lte: finalDate };
+    }
+
+    let pumpNozel = await PumpNozel.find(query);
+    res.json({ code: 200, model: pumpNozel });
+  } catch (error) {
+    return res.status(500).json({ code: 500, msg: error.message });
+  }
+};
 const addNozelReading = async (req, res) => {
   try {
     const { data } = req.body;
@@ -186,4 +205,5 @@ module.exports = {
   getPumpNozelSale,
   getNozelData,
   getNozelReading,
+  getNozelReadingRange,
 };

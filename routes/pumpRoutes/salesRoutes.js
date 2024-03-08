@@ -10,6 +10,7 @@ router.post("/getPumpNozelClosingMeter",pumpNozelController.getPumpNozelClosingM
 router.post("/getPumpNozelSale",pumpNozelController.getPumpNozelSale)
 router.post("/getNozelData",pumpNozelController.getNozelData)
 router.post("/getNozelReading",pumpNozelController.getNozelReading)
+router.post("/getNozelReadingRange",pumpNozelController.getNozelReadingRange)
 
 router.post("/addOtherSale",pumpOtherController.addOtherSale)
 router.post("/getOtherSale",pumpOtherController.getOtherSale)
