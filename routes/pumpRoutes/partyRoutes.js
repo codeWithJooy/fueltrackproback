@@ -8,6 +8,10 @@ router.post("/getPartyVehicle",partyController.getPartyVehicle)
 router.post("/addPartySales",partyController.addPartySales)
 router.post("/getPartySales",partyController.getPartySales)
 router.post("/getPartySalesRange",partyController.getPartySalesRange)
+router.post("/addPartyReceipt",partyController.addPartyReceipt)
+router.post("/addPartyPayment",partyController.addPartyPayment)
+router.post("/getPartyReceipt",partyController.getPartyReceipt)
+router.post("/getPartyPayment",partyController.getPartyPayment)
 
 module.exports=router
 
